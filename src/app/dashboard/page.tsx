@@ -2,84 +2,88 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { LayoutDashboard, Home, Users, Settings, LogOut, TrendingUp, DollarSign, Building, Bell, Search, Menu, MessageSquare, Mail, Layers, CreditCard } from "lucide-react";
+import { TrendingUp, DollarSign, Building, Users, Calendar, ArrowUpRight, ArrowDownRight, MoreVertical, Star, MapPin, Home, Layers } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, AreaChart, Area } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, AreaChart, Area, PieChart, Pie, Cell } from 'recharts';
 
 // Mock Data for Charts
 const revenueData = [
     { name: 'Jan', income: 4000, expense: 2400 },
     { name: 'Feb', income: 3000, expense: 1398 },
-    { name: 'Mar', income: 2000, expense: 9800 },
+    { name: 'Mar', income: 4000, expense: 9800 },
     { name: 'Apr', income: 2780, expense: 3908 },
     { name: 'May', income: 1890, expense: 4800 },
     { name: 'Jun', income: 2390, expense: 3800 },
     { name: 'Jul', income: 3490, expense: 4300 },
 ];
 
-const salesData = [
-    { name: 'Jan', value: 400 },
-    { name: 'Feb', value: 300 },
-    { name: 'Mar', value: 550 },
-    { name: 'Apr', value: 450 },
-    { name: 'May', value: 600 },
-    { name: 'Jun', value: 700 },
+const propertyStatusData = [
+    { name: 'For Sale', value: 400, color: '#8b5cf6' },
+    { name: 'For Rent', value: 300, color: '#10b981' },
+    { name: 'Sold', value: 300, color: '#f59e0b' },
+];
+
+const topAgents = [
+    { name: 'Rahul Sharma', properties: 45, rating: 4.8, image: 'https://i.pravatar.cc/150?u=rahul' },
+    { name: 'Priya Verma', properties: 38, rating: 4.9, image: 'https://i.pravatar.cc/150?u=priya' },
+    { name: 'Amit Singh', properties: 32, rating: 4.7, image: 'https://i.pravatar.cc/150?u=amit' },
+];
+
+const recentProperties = [
+    { name: 'Luxury Villa', location: 'Alibaug, Mumbai', price: '₹4.5 Cr', status: 'For Sale', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&auto=format&fit=crop&q=60' },
+    { name: 'Skyline Apartment', location: 'Worli, Mumbai', price: '₹12.2 Cr', status: 'For Rent', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&auto=format&fit=crop&q=60' },
+    { name: 'Studio Flat', location: 'Andheri, Mumbai', price: '₹85 L', status: 'For Sale', image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&auto=format&fit=crop&q=60' },
 ];
 
 export default function AdminDashboard() {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 pb-12">
             {/* Metrics Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                 <MetricCard
-                    title="No. of Properties"
-                    value="2,854"
-                    change="+7.34%"
+                    title="Total Revenue"
+                    value="₹78.3 Cr"
+                    change="+12.5%"
+                    isPositive
+                    icon={<DollarSign size={20} />}
                     color="bg-purple-100 text-purple-600"
-                    icon={<Building size={24} />}
-                    chart={<MiniBarChart color="#8b5cf6" />}
                 />
                 <MetricCard
-                    title="Regi. Agents"
-                    value="705"
-                    change="+76.89%"
+                    title="Properties Sold"
+                    value="1,284"
+                    change="+8.2%"
                     isPositive
+                    icon={<Building size={20} />}
                     color="bg-emerald-100 text-emerald-600"
-                    icon={<Users size={24} />}
-                    chart={<MiniBarChart color="#10b981" />}
                 />
                 <MetricCard
-                    title="Customers"
-                    value="9,431"
-                    change="+45.00%"
-                    isPositive
-                    color="bg-orange-100 text-orange-600"
-                    icon={<Users size={24} />}
-                    chart={<MiniBarChart color="#f59e0b" />}
-                />
-                <MetricCard
-                    title="Revenue"
-                    value="$78.3M"
-                    change="+8.76%"
-                    isPositive
+                    title="Active Agents"
+                    value="705"
+                    change="-2.4%"
+                    isPositive={false}
+                    icon={<Users size={20} />}
                     color="bg-blue-100 text-blue-600"
-                    icon={<DollarSign size={24} />}
-                    chart={<MiniBarChart color="#2563eb" />}
+                />
+                <MetricCard
+                    title="Customer Leads"
+                    value="9,431"
+                    change="+15.0%"
+                    isPositive
+                    icon={<TrendingUp size={20} />}
+                    color="bg-orange-100 text-orange-600"
                 />
             </div>
 
-            {/* Main Charts Section */}
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-                {/* Sales Analytic (Large Wave Chart) */}
-                <Card className="xl:col-span-2 border-none shadow-sm rounded-3xl overflow-hidden">
+                {/* Sales Analytic */}
+                <Card className="xl:col-span-2 border-none shadow-sm rounded-3xl overflow-hidden bg-white">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <div>
-                            <CardTitle>Sales Analytic</CardTitle>
+                            <CardTitle className="text-xl font-bold">Income Analysis</CardTitle>
+                            <CardDescription>Monthly revenue vs expenses</CardDescription>
                         </div>
-                        <div className="flex gap-2">
-                            <span className="text-xs font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">This Month</span>
-                        </div>
+                        <Button variant="outline" size="sm" className="rounded-xl">This Year</Button>
                     </CardHeader>
                     <CardContent className="h-[350px]">
                         <ResponsiveContainer width="100%" height="100%">
@@ -89,87 +93,174 @@ export default function AdminDashboard() {
                                         <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.3} />
                                         <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                                     </linearGradient>
-                                    <linearGradient id="colorExpense" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
-                                        <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                                    </linearGradient>
                                 </defs>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
                                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 12 }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 12 }} />
-                                <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }} />
-                                <Area type="monotone" dataKey="income" stroke="#8b5cf6" strokeWidth={3} fillOpacity={1} fill="url(#colorIncome)" />
-                                <Area type="monotone" dataKey="expense" stroke="#10b981" strokeWidth={3} fillOpacity={1} fill="url(#colorExpense)" />
+                                <Tooltip contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
+                                <Area type="monotone" dataKey="income" stroke="#8b5cf6" strokeWidth={4} fillOpacity={1} fill="url(#colorIncome)" />
+                                <Area type="monotone" dataKey="expense" stroke="#10b981" strokeWidth={4} fillOpacity={0} />
                             </AreaChart>
                         </ResponsiveContainer>
                     </CardContent>
                 </Card>
 
-                {/* Balance Card (Purple) */}
-                <Card className="bg-primary text-white border-none shadow-lg shadow-primary/30 rounded-3xl relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-8 opacity-10">
-                        <DollarSign size={120} />
-                    </div>
-                    <CardContent className="p-8 flex flex-col justify-between h-full relative z-10">
-                        <div>
-                            <h3 className="text-3xl font-bold mb-1">$117,000.43</h3>
-                            <p className="text-white/80">My Balance</p>
+                {/* Property Status Donut */}
+                <Card className="border-none shadow-sm rounded-3xl bg-white">
+                    <CardHeader>
+                        <CardTitle className="text-xl font-bold">Property Status</CardTitle>
+                        <CardDescription>Distribution of listings</CardDescription>
+                    </CardHeader>
+                    <CardContent className="h-[250px] flex flex-col items-center justify-center">
+                        <ResponsiveContainer width="100%" height="100%">
+                            <PieChart>
+                                <Pie
+                                    data={propertyStatusData}
+                                    cx="50%"
+                                    cy="50%"
+                                    innerRadius={60}
+                                    outerRadius={80}
+                                    paddingAngle={5}
+                                    dataKey="value"
+                                >
+                                    {propertyStatusData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.color} />
+                                    ))}
+                                </Pie>
+                                <Tooltip />
+                            </PieChart>
+                        </ResponsiveContainer>
+                        <div className="grid grid-cols-3 gap-4 mt-4 w-full text-center">
+                            {propertyStatusData.map(item => (
+                                <div key={item.name}>
+                                    <p className="text-xs text-muted-foreground">{item.name}</p>
+                                    <p className="text-sm font-bold">{item.value}</p>
+                                </div>
+                            ))}
                         </div>
+                    </CardContent>
+                </Card>
+            </div>
 
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Recent Properties */}
+                <Card className="lg:col-span-2 border-none shadow-sm rounded-3xl bg-white overflow-hidden">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                        <CardTitle className="text-xl font-bold">Recent Properties</CardTitle>
+                        <Link href="/dashboard/listings" className="text-sm text-primary font-semibold hover:underline">View All</Link>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left">
+                                <thead className="bg-muted/50">
+                                    <tr>
+                                        <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">Property</th>
+                                        <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">Location</th>
+                                        <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">Price</th>
+                                        <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider">Status</th>
+                                        <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider"></th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-muted">
+                                    {recentProperties.map((prop, i) => (
+                                        <tr key={i} className="hover:bg-muted/30 transition-colors">
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-center gap-3">
+                                                    <img src={prop.image} className="h-10 w-10 rounded-lg object-cover" alt="" />
+                                                    <span className="font-semibold text-sm">{prop.name}</span>
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                                                    <MapPin size={12} />
+                                                    {prop.location}
+                                                </div>
+                                            </td>
+                                            <td className="px-6 py-4 font-bold text-sm">{prop.price}</td>
+                                            <td className="px-6 py-4">
+                                                <span className={cn(
+                                                    "px-2 py-1 rounded-full text-[10px] font-bold uppercase",
+                                                    prop.status === 'For Sale' ? "bg-purple-100 text-purple-600" : "bg-emerald-100 text-emerald-600"
+                                                )}>
+                                                    {prop.status}
+                                                </span>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <Button variant="ghost" size="icon" className="rounded-full">
+                                                    <MoreVertical size={16} />
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                {/* Top Agents */}
+                <Card className="border-none shadow-sm rounded-3xl bg-white">
+                    <CardHeader>
+                        <CardTitle className="text-xl font-bold">Top Agents</CardTitle>
+                        <CardDescription>Performance leaders</CardDescription>
+                    </CardHeader>
+                    <CardContent>
                         <div className="space-y-6">
-                            <div className="flex justify-between items-center">
-                                <div>
-                                    <p className="text-2xl font-bold">$13,321.12</p>
-                                    <p className="text-sm text-white/70">Income</p>
+                            {topAgents.map((agent, i) => (
+                                <div key={i} className="flex items-center gap-4 group cursor-pointer">
+                                    <div className="relative">
+                                        <img src={agent.image} className="h-12 w-12 rounded-2xl object-cover shadow-md" alt="" />
+                                        <div className="absolute -bottom-1 -right-1 bg-white rounded-lg px-1 py-0.5 shadow-sm border border-muted flex items-center gap-0.5">
+                                            <Star size={10} className="fill-yellow-400 text-yellow-400" />
+                                            <span className="text-[10px] font-bold">{agent.rating}</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="font-bold text-sm group-hover:text-primary transition-colors">{agent.name}</p>
+                                        <p className="text-xs text-muted-foreground">{agent.properties} Properties Sold</p>
+                                    </div>
+                                    <ArrowUpRight size={18} className="text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                                 </div>
-                                <div className="w-px h-10 bg-white/20" />
-                                <div>
-                                    <p className="text-2xl font-bold">$7,566.11</p>
-                                    <p className="text-sm text-white/70">Expense</p>
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white border-none rounded-xl">Send</Button>
-                                <Button className="w-full bg-white/20 hover:bg-white/30 text-white border-none rounded-xl">Receive</Button>
-                            </div>
+                            ))}
                         </div>
+                        <Button variant="outline" className="w-full mt-8 rounded-2xl bg-muted/30 text-foreground hover:bg-primary hover:text-white transition-all border-none font-bold">
+                            View All Agents
+                        </Button>
                     </CardContent>
                 </Card>
             </div>
 
             {/* Property & Revenue Targets */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <TargetCard title="Property" value="15,780" target="60%" icon={<Home className="text-primary" size={28} />} color="bg-primary" />
-                <TargetCard title="Revenue" value="$78.3M" target="80%" icon={<DollarSign className="text-emerald-500" size={28} />} color="bg-emerald-500" />
+                <TargetCard title="Sales Target" value="15,780 Units" target="75%" icon={<Home className="text-primary" size={28} />} color="bg-primary" />
+                <TargetCard title="Revenue Target" value="₹100 Cr" target="80%" icon={<DollarSign className="text-emerald-500" size={28} />} color="bg-emerald-500" />
             </div>
         </div>
     );
 }
 
-function MetricCard({ title, value, change, isPositive, color, icon, chart }: any) {
+function MetricCard({ title, value, change, isPositive, color, icon }: any) {
     return (
-        <Card className="border-none shadow-sm rounded-2xl">
+        <Card className="border-none shadow-sm rounded-3xl bg-white group hover:shadow-xl hover:shadow-primary/10 transition-all duration-300">
             <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                    <div className={cn("p-3 rounded-xl", color)}>
+                <div className="flex items-center gap-4 mb-4">
+                    <div className={cn("p-4 rounded-2xl transition-transform group-hover:scale-110", color)}>
                         {icon}
                     </div>
-                    <div className="h-10 w-20">
-                        {chart}
+                    <div>
+                        <p className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">{title}</p>
+                        <h3 className="text-2xl font-black tracking-tight">{value}</h3>
                     </div>
                 </div>
-                <div>
-                    <p className="text-sm text-muted-foreground font-medium mb-1">{title}</p>
-                    <div className="flex items-end gap-3">
-                        <h3 className="text-2xl font-bold">{value}</h3>
-                        <span className={cn(
-                            "text-xs font-bold px-2 py-1 rounded-md",
-                            change.includes("+") ? "bg-emerald-100 text-emerald-600" : "bg-red-100 text-red-600"
-                        )}>
-                            {change}
-                        </span>
+                <div className="flex items-center gap-2 pt-2 border-t border-muted/50">
+                    <div className={cn(
+                        "flex items-center gap-0.5 text-xs font-bold rounded-full px-2 py-0.5",
+                        isPositive ? "bg-emerald-100 text-emerald-600" : "bg-red-100 text-red-600"
+                    )}>
+                        {isPositive ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
+                        {change}
                     </div>
+                    <span className="text-[10px] text-muted-foreground font-medium italic">vs last month</span>
                 </div>
             </CardContent>
         </Card>
@@ -178,32 +269,26 @@ function MetricCard({ title, value, change, isPositive, color, icon, chart }: an
 
 function TargetCard({ title, value, target, icon, color }: any) {
     return (
-        <Card className="border-none shadow-sm rounded-2xl">
+        <Card className="border-none shadow-sm rounded-3xl bg-white overflow-hidden">
             <CardContent className="p-8 flex items-center justify-between">
-                <div className="text-center w-full">
-                    <div className="bg-muted p-4 rounded-full w-20 h-20 mx-auto flex items-center justify-center mb-4">
+                <div className="flex items-center gap-6 w-full">
+                    <div className="bg-muted p-5 rounded-3xl">
                         {icon}
                     </div>
-                    <h3 className="text-2xl font-bold mb-1">{value}</h3>
-                    <p className="text-muted-foreground mb-4">{target} Target</p>
-                    <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-                        <div className={cn("h-full rounded-full", color)} style={{ width: target }} />
+                    <div className="flex-1">
+                        <div className="flex justify-between items-end mb-2">
+                            <div>
+                                <p className="text-sm text-muted-foreground font-semibold uppercase tracking-wider mb-1">{title}</p>
+                                <h3 className="text-3xl font-black">{value}</h3>
+                            </div>
+                            <span className="text-sm font-bold text-primary">{target} Achievement</span>
+                        </div>
+                        <div className="h-3 w-full bg-muted rounded-full overflow-hidden">
+                            <div className={cn("h-full rounded-full transition-all duration-1000", color)} style={{ width: target }} />
+                        </div>
                     </div>
                 </div>
             </CardContent>
         </Card>
-    )
-}
-
-function MiniBarChart({ color }: { color: string }) {
-    const data = [
-        { v: 10 }, { v: 20 }, { v: 15 }, { v: 25 }, { v: 30 }, { v: 20 }, { v: 10 }
-    ];
-    return (
-        <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={data}>
-                <Bar dataKey="v" fill={color} radius={[2, 2, 0, 0]} />
-            </BarChart>
-        </ResponsiveContainer>
     )
 }
