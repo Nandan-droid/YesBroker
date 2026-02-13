@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { LayoutDashboard, Home, Users, Settings, LogOut, Building, Bell, Search, Menu, Layers, CreditCard } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
     return (
         <div className="min-h-screen bg-background flex font-sans">
             {/* Dark Sidebar */}
@@ -57,23 +58,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
             {/* Main Content */}
             <main className="flex-1 lg:ml-72 p-8 space-y-8 overflow-x-hidden">
-                {/* Header */}
-                <header className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
-                    <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon" className="lg:hidden text-muted-foreground">
-                            <Menu />
-                        </Button>
-                    </div>
-                    <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon" className="relative text-muted-foreground">
-                            <Bell size={20} />
-                            <span className="absolute top-2 right-2 h-2 w-2 bg-danger rounded-full" />
-                        </Button>
-                        <Button variant="ghost" size="icon" className="text-muted-foreground">
-                            <Settings size={20} />
-                        </Button>
-                    </div>
-                </header>
+                {/* Header - Hidden on Add Property Page */}
+                {pathname !== "/dashboard/add-property" && (
+                    <header className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm">
+                        <div className="flex items-center gap-4">
+                            <Button variant="ghost" size="icon" className="lg:hidden text-muted-foreground">
+                                <Menu />
+                            </Button>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <Button variant="ghost" size="icon" className="relative text-muted-foreground">
+                                <Bell size={20} />
+                                <span className="absolute top-2 right-2 h-2 w-2 bg-danger rounded-full" />
+                            </Button>
+                            <Button variant="ghost" size="icon" className="text-muted-foreground">
+                                <Settings size={20} />
+                            </Button>
+                        </div>
+                    </header>
+                )}
 
                 {children}
             </main>
