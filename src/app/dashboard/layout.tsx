@@ -63,13 +63,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         <Button variant="ghost" size="icon" className="lg:hidden text-muted-foreground">
                             <Menu />
                         </Button>
-                        <div className="relative hidden md:block">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                            <input
-                                placeholder="Search..."
-                                className="pl-10 pr-4 py-2 bg-muted rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 w-64"
-                            />
-                        </div>
                     </div>
                     <div className="flex items-center gap-4">
                         <Button variant="ghost" size="icon" className="relative text-muted-foreground">
