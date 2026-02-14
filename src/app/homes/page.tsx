@@ -148,7 +148,13 @@ function HomeCard({ property }: { property: any }) {
         <Card className="group overflow-hidden rounded-2xl border-border/30 bg-white shadow-sm hover:shadow-xl transition-all duration-300">
             <div className="aspect-[4/3] bg-muted relative overflow-hidden">
                 <img
-                    src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&auto=format&fit=crop&q=60&sig=${property.id}`}
+                    src={
+                        property.id === 1 ? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" :
+                            property.id === 2 ? "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" :
+                                property.id === 3 ? "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop" :
+                                    property.id === 4 ? "https://images.unsplash.com/photo-1600607687920-4e524cb35a5a?q=80&w=1000&auto=format&fit=crop" :
+                                        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
+                    }
                     alt={property.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -183,7 +189,7 @@ function HomeCard({ property }: { property: any }) {
 
                 <div className="pt-2 border-t border-border/30 flex items-center justify-between text-[10px] font-black uppercase tracking-widest text-primary">
                     <span className="flex items-center gap-1"><Layers size={10} /> YesBroker Exclusive</span>
-                    <Link href={`/p/rahul/1`} className="hover:underline flex items-center gap-1">Details <ArrowUpDown size={10} /></Link>
+                    <Link href={`/p/rahul-sharma/${property.id}`} className="hover:underline flex items-center gap-1">Details <ArrowUpDown size={10} /></Link>
                 </div>
             </CardContent>
         </Card>
