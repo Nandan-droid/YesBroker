@@ -149,11 +149,11 @@ function HomeCard({ property }: { property: any }) {
             <div className="aspect-[4/3] bg-muted relative overflow-hidden">
                 <img
                     src={
-                        property.id === 1 ? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" :
-                            property.id === 2 ? "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" :
-                                property.id === 3 ? "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop" :
-                                    property.id === 4 ? "https://images.unsplash.com/photo-1600607687920-4e524cb35a5a?q=80&w=1000&auto=format&fit=crop" :
-                                        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
+                        property.id === 1 ? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" :
+                            property.id === 2 ? "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" :
+                                property.id === 3 ? "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80" :
+                                    property.id === 4 ? "https://images.unsplash.com/photo-1600319108143-9b59ef48597a?auto=format&fit=crop&w=800&q=80" :
+                                        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
                     }
                     alt={property.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
