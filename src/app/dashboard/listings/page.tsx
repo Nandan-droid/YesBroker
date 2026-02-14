@@ -123,10 +123,19 @@ export default function ListingsPage() {
                         {properties.map((prop) => (
                             <TableRow key={prop.id} className="hover:bg-slate-50/50 transition-colors border-slate-50 group">
                                 <TableCell className="px-8 py-6">
-                                    <div className="flex flex-col gap-1.5">
-                                        <span className="font-black text-slate-800 group-hover:text-primary transition-colors">{prop.title}</span>
-                                        <div className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                                            <MapPin size={12} className="mr-1.5 text-primary/50" /> {prop.location}
+                                    <div className="flex items-center gap-4">
+                                        <div className="h-12 w-16 bg-slate-100 rounded-xl overflow-hidden shadow-sm flex-shrink-0 group-hover:scale-105 transition-transform duration-500">
+                                            <img
+                                                src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=200&auto=format&fit=crop&sig=${prop.id}`}
+                                                className="w-full h-full object-cover"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <div className="flex flex-col gap-1.5">
+                                            <span className="font-black text-slate-800 group-hover:text-primary transition-colors">{prop.title}</span>
+                                            <div className="flex items-center text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                                                <MapPin size={12} className="mr-1.5 text-primary/50" /> {prop.location}
+                                            </div>
                                         </div>
                                     </div>
                                 </TableCell>
