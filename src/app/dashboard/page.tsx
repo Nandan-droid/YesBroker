@@ -31,9 +31,9 @@ const topAgents = [
 ];
 
 const recentProperties = [
-    { name: 'Luxury Villa', location: 'Alibaug, Mumbai', price: '₹4.5 Cr', status: 'For Sale', image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&auto=format&fit=crop&q=60' },
-    { name: 'Skyline Apartment', location: 'Worli, Mumbai', price: '₹12.2 Cr', status: 'For Rent', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&auto=format&fit=crop&q=60' },
-    { name: 'Studio Flat', location: 'Andheri, Mumbai', price: '₹85 L', status: 'For Sale', image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=800&auto=format&fit=crop&q=60' },
+    { name: 'Luxury Villa', location: 'Alibaug, Mumbai', price: '₹4.5 Cr', status: 'For Sale', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop' },
+    { name: 'Skyline Apartment', location: 'Worli, Mumbai', price: '₹12.2 Cr', status: 'For Rent', image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=400&auto=format&fit=crop' },
+    { name: 'Studio Flat', location: 'Andheri, Mumbai', price: '₹85 L', status: 'For Sale', image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=400&auto=format&fit=crop' },
 ];
 
 export default function AdminDashboard() {
