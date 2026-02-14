@@ -53,18 +53,32 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ broke
                 {/* Hero Feature Image */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[60vh]">
                     <div className="md:col-span-8 bg-muted rounded-[48px] overflow-hidden relative group">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent mix-blend-overlay" />
-                        <div className="absolute inset-0 flex items-center justify-center italic text-muted-foreground/30 font-black text-4xl uppercase tracking-widest">
-                            Prime Visual
-                        </div>
+                        <img
+                            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&auto=format&fit=crop&q=80"
+                            alt="Property Hero"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                         <div className="absolute bottom-10 left-10 inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-6 py-3 rounded-2xl shadow-xl">
                             <Sparkles className="text-primary w-5 h-5" />
                             <span className="text-sm font-black text-[#111827]">Verified Exclusive</span>
                         </div>
                     </div>
                     <div className="hidden md:flex md:col-span-4 flex-col gap-6">
-                        <div className="flex-1 bg-muted rounded-[32px] flex items-center justify-center italic text-muted-foreground/30 font-black text-xl">Interior 1</div>
-                        <div className="flex-1 bg-muted rounded-[32px] flex items-center justify-center italic text-muted-foreground/30 font-black text-xl">Interior 2</div>
+                        <div className="flex-1 bg-muted rounded-[32px] overflow-hidden">
+                            <img
+                                src="https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?w=800&auto=format&fit=crop&q=60"
+                                alt="Interior 1"
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                            />
+                        </div>
+                        <div className="flex-1 bg-muted rounded-[32px] overflow-hidden">
+                            <img
+                                src="https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?w=800&auto=format&fit=crop&q=60"
+                                alt="Interior 2"
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                            />
+                        </div>
                     </div>
                 </div>
 
