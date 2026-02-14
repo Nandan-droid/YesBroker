@@ -146,7 +146,12 @@ function FilterButton({ label }: { label: string }) {
 function HomeCard({ property }: { property: any }) {
     return (
         <Card className="group overflow-hidden rounded-2xl border-border/30 bg-white shadow-sm hover:shadow-xl transition-all duration-300">
-            <div className="aspect-[4/3] bg-muted relative">
+            <div className="aspect-[4/3] bg-muted relative overflow-hidden">
+                <img
+                    src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&auto=format&fit=crop&q=60&sig=${property.id}`}
+                    alt={property.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
                 <div className="absolute top-4 right-4 flex gap-2 z-10">
                     <button className="w-9 h-9 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center text-[#111827] hover:text-red-500 shadow-sm transition-colors">
                         <Heart size={16} />
@@ -156,10 +161,6 @@ function HomeCard({ property }: { property: any }) {
                     <span className="bg-primary/90 backdrop-blur-md text-white px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider">
                         {property.tag}
                     </span>
-                </div>
-                {/* Placeholder Image */}
-                <div className="w-full h-full flex items-center justify-center italic text-muted-foreground/30 font-black text-sm bg-gradient-to-br from-muted/50 to-muted">
-                    Photo Coming Soon
                 </div>
             </div>
             <CardContent className="p-4 space-y-3">
