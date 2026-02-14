@@ -67,14 +67,14 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ broke
                     <div className="hidden md:flex md:col-span-4 flex-col gap-6">
                         <div className="flex-1 bg-muted rounded-[32px] overflow-hidden group">
                             <img
-                                src="https://images.unsplash.com/photo-1600607687920-4e524cb35a5a?q=80&w=1000&auto=format&fit=crop"
+                                src="https://images.unsplash.com/photo-1600607687937-08731a36c85e?w=800&auto=format&fit=crop&q=80"
                                 alt="Modern Living Area"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                         </div>
                         <div className="flex-1 bg-muted rounded-[32px] overflow-hidden group">
                             <img
-                                src="https://images.unsplash.com/photo-1600566752355-397921137bf1?q=80&w=1000&auto=format&fit=crop"
+                                src="https://images.unsplash.com/photo-1600566753190-17f0bb2a6c3e?w=800&auto=format&fit=crop&q=80"
                                 alt="Premium Kitchen"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
@@ -135,18 +135,18 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ broke
                             </h2>
                             <div className="grid grid-cols-2 gap-4 h-[400px]">
                                 <img
-                                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
+                                    src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80"
                                     className="w-full h-full object-cover rounded-[32px]"
                                     alt="Bedroom"
                                 />
                                 <div className="grid grid-rows-2 gap-4">
                                     <img
-                                        src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop"
+                                        src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80"
                                         className="w-full h-full object-cover rounded-[24px]"
                                         alt="Bathroom"
                                     />
                                     <img
-                                        src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=1000&auto=format&fit=crop"
+                                        src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1000&q=80"
                                         className="w-full h-full object-cover rounded-[24px]"
                                         alt="View"
                                     />
