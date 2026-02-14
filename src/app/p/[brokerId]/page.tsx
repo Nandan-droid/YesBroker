@@ -82,10 +82,13 @@ export default function PublicPortfolioPage() {
 
                     <div className="md:col-span-4 flex flex-col items-center md:items-end">
                         <div className="w-56 h-56 bg-primary rounded-[48px] rotate-3 shadow-2xl shadow-primary/20 relative overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-primary to-purple-500 opacity-80" />
-                            <User className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 w-48 h-48 text-white/30" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-6xl font-black text-white italic drop-shadow-lg">RS</span>
+                            <img
+                                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=60"
+                                alt="Broker Avatar"
+                                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
+                                <span className="text-2xl font-black text-white italic drop-shadow-md">RS</span>
                             </div>
                         </div>
                         <div className="mt-8 flex gap-3">
@@ -157,7 +160,12 @@ function PropertyCard({ property }: { property: any }) {
     return (
         <Card className="group overflow-hidden rounded-[32px] border-border/50 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <div className="aspect-[16/10] bg-muted relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/30" />
+                <img
+                    src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=60&sig=${property.id}`}
+                    alt={property.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 <div className="absolute top-6 right-6 flex gap-2">
                     <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black rounded-full shadow-sm uppercase tracking-wider text-[#111827]">
                         {property.tag}
@@ -165,10 +173,6 @@ function PropertyCard({ property }: { property: any }) {
                 </div>
                 <div className="absolute bottom-6 left-6 inline-flex items-center gap-2 bg-[#111827]/80 backdrop-blur-md text-white px-4 py-2 rounded-xl text-xs font-bold">
                     <IndianRupee size={12} /> {property.price}
-                </div>
-                {/* Visual Placeholder */}
-                <div className="w-full h-full flex items-center justify-center italic text-muted-foreground/50 font-black text-xl bg-gradient-to-br from-muted to-muted/50">
-                    YesBroker Premium Visual
                 </div>
             </div>
             <CardContent className="p-8 space-y-6">
