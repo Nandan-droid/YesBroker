@@ -161,11 +161,16 @@ function PropertyCard({ property }: { property: any }) {
         <Card className="group overflow-hidden rounded-[32px] border-border/50 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <div className="aspect-[16/10] bg-muted relative overflow-hidden">
                 <img
-                    src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=60&sig=${property.id}`}
+                    src={
+                        property.id === 1 ? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" :
+                            property.id === 2 ? "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop" :
+                                property.id === 3 ? "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1000&auto=format&fit=crop" :
+                                    "https://images.unsplash.com/photo-1600607687920-4e524cb35a5a?q=80&w=1000&auto=format&fit=crop"
+                    }
                     alt={property.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
                 <div className="absolute top-6 right-6 flex gap-2">
                     <div className="bg-white/90 backdrop-blur-md px-4 py-1.5 text-[10px] font-black rounded-full shadow-sm uppercase tracking-wider text-[#111827]">
                         {property.tag}
