@@ -126,7 +126,7 @@ export default function ListingsPage() {
                                     <div className="flex items-center gap-4">
                                         <div className="h-12 w-16 bg-slate-100 rounded-xl overflow-hidden shadow-sm flex-shrink-0 group-hover:scale-105 transition-transform duration-500">
                                             <img
-                                                src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=200&auto=format&fit=crop&sig=${prop.id}`}
+                                                src={`https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=200&q=80&sig=${prop.id}`}
                                                 className="w-full h-full object-cover"
                                                 alt=""
                                             />
