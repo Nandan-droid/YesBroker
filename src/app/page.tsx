@@ -58,9 +58,9 @@ export default function Home() {
         <section
           className="relative h-[85vh] min-h-[700px] flex items-center justify-center px-6 overflow-hidden"
           style={{
-            backgroundImage: "url('/hero-bg.png')",
+            backgroundImage: "url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&auto=format&fit=crop&q=80')",
             backgroundSize: 'cover',
-            backgroundPosition: 'center 40%'
+            backgroundPosition: 'center'
           }}
         >
           {/* Enhanced Dark Overlay for Perfect Readability */}
